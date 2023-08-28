@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
-import CostumerCard from "../components/CustomerCard"
+import CustomerCard from "../components/CustomerCard"
 import { Grid, Typography } from "@mui/material"
 
 const Customers = ({ title }) => {
@@ -20,7 +20,7 @@ const Customers = ({ title }) => {
                 {
                     customers.map(item => (
                         <Grid item xs={12} md={4} key="key">
-                            <CostumerCard
+                            <CustomerCard
                                 key="key"
                                 name={item.first_name}
                                 lastname={item.last_name}
