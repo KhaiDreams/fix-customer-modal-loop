@@ -1,32 +1,20 @@
-import { useState } from 'react'
 import {
     Card,
     CardHeader,
     CardActions,
     Avatar,
     IconButton,
-} from '@mui/material'
-import DeleteIcon from '@mui/icons-material/Delete'
-import EditIcon from '@mui/icons-material/Edit'
-import ModalConfirm from './ModalConfirm'
+} from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+
 const CustomerCard = ({
     name,
     lastname,
     email,
     avatar,
+    onOpenModal,
 }) => {
-    CustomerCard.propTypes = { name, lastname, email, avatar }
-
-    const [openModal, setOpenModal] = useState(false)
-    const handleToggleOpenModal = () => {
-        setOpenModal(!openModal)
-    }
-    const handleConfirmModal = () => {
-        console.log("ok")
-    }
-    const handleRemoveCustomer = () => {
-        handleConfirmModal()
-    }
     return (
         <>
             <Card sx={{ maxWidth: 345, bgcolor: '#DFD7BF', margin: '20px 0' }}>
@@ -42,20 +30,13 @@ const CustomerCard = ({
                     <IconButton aria-label="add to favorites">
                         <EditIcon />
                     </IconButton>
-                    <IconButton aria-label="share" onClick={handleRemoveCustomer}>
+                    <IconButton aria-label="share" onClick={onOpenModal}>
                         <DeleteIcon />
                     </IconButton>
                 </CardActions>
             </Card>
-            <ModalConfirm
-                open={openModal}
-                onClose={handleToggleOpenModal}
-                onConfirm={handleConfirmModal}
-                title='Deseja remover esse cadastro?'
-                message='Não será possível reverter essa ação.'
-            />
         </>
+    );
+};
 
-    )
-}
-export default CustomerCard
+export default CustomerCard;
